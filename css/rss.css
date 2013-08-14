@@ -1,0 +1,33 @@
+#main {	
+    margin:0 auto;
+	width : 300px;
+	height : 600px;
+	border: 2px outset rgba(112,112,112,0.5);
+	background-color : #c1c1c1;
+}
+.news {
+    display : none;
+    margin:0 auto;
+    margin-top:16px;
+    border: 1px solid black;
+    width : 270px;
+	height : 176px;
+    overflow : hidden;
+}
+#load{
+    position: relative;
+    margin-top: 80%;
+    width: 100px; 
+    height: 100px ; 
+}
+.error{
+    margin-top: 80%;
+    color : red;
+    font-weight: bold;
+    font-size: 50px;
+
+}
+
+.date{}
+.description{}
+.link{}
