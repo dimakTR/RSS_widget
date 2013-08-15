@@ -2,9 +2,9 @@
     position : relative;
     margin:0 auto;
 	width : 300px;
-	height : 600px;
+    height : 600px;
 	border: 2px outset rgba(112,112,112,0.5);
-	background-color : #c1c1c1;
+	background-color : rgba(215, 215, 215, 0.5);
     overflow-y: scroll;
     
 }
@@ -12,11 +12,13 @@
     display : none;
     margin:0 auto;
     margin-top:16px;
-    border: 1px solid black;
+    margin-bottom:16px;
+    border: 1px solid grey;
     width : 270px;
-	//height : 176px;
     overflow : hidden;
+    padding : 2px
 }
+
 #load{
     position: relative;
     margin-top: 80%;
@@ -31,13 +33,16 @@
 
 }
 
-.date{}
+.date{
+    
+    text-align : center;
+}
 .description{
+    font-size: 13px;
     text-align : center;
 }
 .link{
-
-    font-size: 14px;
+    font-size: 16px;
     text-align : center;
 }
 

@@ -1,7 +1,7 @@
 ﻿$(document).ready(function() {
     get_data();
-    format();
     
+   
 })
 
 function get_data(){
@@ -17,13 +17,7 @@ function get_data(){
     });
 }
 
-function format(){
-         var date;  
-         date = $('#main').html();
-         console.log(date);
-        
 
-}
 
 
 
@@ -31,24 +25,48 @@ function format(){
 
 function getRSS(xml) {
     $("#load").fadeOut().hide();
+     var date; 
             $(xml).find("item").each(function(i){
-                                       var url,atr;
-                                       
+                                       var url;
+                                       var item,description,link,date;
                                        if(i == 3){
                                             return false;
                                        }
                                        else {
-                                            url = $(this).find("link").text();     
-                                            $("#main").append('<div class="news"><div class="link"><a id="num" >' + 
-                                            $(this).find("title").text() + '</a></div><div class="description"> ' +
-                                            $(this).find("description").text() + '</div><div class="date">Опубликовано' +
-                                            $(this).find("pubDate").text() + '</div></div>');
+                                            item = $('<div/>',{ class :'news'});
+                                            description = $('<div/>',{ class :'description', id : 'number'+i});
+                                            link = $('<div/>',{ class :'link'});
+                                            date = $('<div/>',{ class :'date'});
+                                            url = $(this).find("link").text();  
+                                            $(link).append('<a id="num" target="_blank" >' + $(this).find("title").text() + '</a>');
+                                            $(description).append($(this).find("description").text());
+                                            $(date).append($(this).find("pubDate").text());                              
+                                            $(item).append(link,description,date);
+                                            $('#main').append(item);
                                             $("#num").attr("id", "num" + i );
                                             $("#num"+i).attr("href",url);
-                                            $("#num"+i).attr("target", "_blank");                                            
                                             $(".news").fadeIn(300);
                                            }
-             });                 
+             });   
+
+ 
+function format(){
+         var date,i;
+            
+         for ( i = 0 ; i < 3; i++) {
+         date = $("#number"+i).text().slice(0,200);
+         $("#number"+i).html('<p>'+date+'[...]'+'<p>');
+        }
+
+
+         
+         
+   console.log(date);
+
+        
+
+}
+format();
 }
 
  
