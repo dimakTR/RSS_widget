@@ -1,9 +1,12 @@
 #main {	
+    position : relative;
     margin:0 auto;
 	width : 300px;
 	height : 600px;
 	border: 2px outset rgba(112,112,112,0.5);
 	background-color : #c1c1c1;
+    overflow-y: scroll;
+    
 }
 .news {
     display : none;
@@ -11,7 +14,7 @@
     margin-top:16px;
     border: 1px solid black;
     width : 270px;
-	height : 176px;
+	//height : 176px;
     overflow : hidden;
 }
 #load{
@@ -29,5 +32,12 @@
 }
 
 .date{}
-.description{}
-.link{}
+.description{
+    text-align : center;
+}
+.link{
+
+    font-size: 14px;
+    text-align : center;
+}
+
