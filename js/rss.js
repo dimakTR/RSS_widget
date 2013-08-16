@@ -3,8 +3,8 @@
 })
 
 function getData(){
-    //var rssUrl = "http://news.drweb.ua/rss/get/?c=9&lng=ru";
-    var rssUrl = "http://feeds.reuters.com/Reuters/worldNews";
+     // var rssUrl = "http://news.drweb.ua/rss/get/?c=9&lng=ru";
+      var rssUrl = "http://feeds.reuters.com/Reuters/worldNews";
     $.ajax({
         url: "http://rss/xml.php?rssUrl=" + rssUrl,
         dataType: "xml",
@@ -58,14 +58,27 @@ function getRSS(xml) {
 
  
     function format(){
-        var date,i;            
+        var data,i,lenght; 
         for ( i = 0 ; i < 3; i++) {
-            date = $("#number"+i).text().slice(0,200);
-            $("#number"+i).html('<p>'+date+'[...]'+'<p>');
+            lenght =$("#number"+i).text().length;
+            
+            if ( lenght > 200 ) {
+                data = $("#number"+i).text().slice(0,200);
+                $("#number"+i).html('<p>'+data+'[...]'+'<p>');
+            }
+            else{
+                data = $("#number"+i).text();
+                $("#number"+i).html('<p>'+data+'<p>');
+            }
+           
         }         
-        console.log(date);
+        
     }
-
+var poller = setInterval(function() { 
+        console.log("checking / loading new notes ..."); 
+        $('#main').empty();
+        $('#main').append('<div align="center" class="loader">' + '<img src="img/ajax-loader.gif" id="load"/>' + '</div>');
+        getData(); } , 180000);
     format();
 }
 

@@ -5,44 +5,52 @@
     height : 600px;
 	border: 2px outset rgba(112,112,112,0.5);
 	background-color : rgba(215, 215, 215, 0.5);
-    overflow-y: scroll;
-    
+    overflow-y: scroll;  
 }
 .news {
+    position: relative;
     display : none;
     margin:0 auto;
-    margin-top:16px;
-    margin-bottom:16px;
+    margin-top:10px;
+    margin-bottom:10px;
     border: 1px solid grey;
-    width : 270px;
+    width : 260px;
     overflow : hidden;
-    padding : 2px
+    padding: 2px;
 }
 
 #load{
     position: relative;
     margin-top: 80%;
-    width: 100px; 
-    height: 100px ; 
+    width: 120px; 
+    height: 120px;
+    margin-left: 10%;
 }
 .error{
     margin-top: 80%;
     color : red;
     font-weight: bold;
     font-size: 50px;
-
 }
 
 .date{
-    
-    text-align : center;
+    font-size: 13px;
+    text-align : right;
+    color: grey;
+    text-decoration:underline;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 .description{
-    font-size: 13px;
+    font-size: 14px;
     text-align : center;
+    padding-left: 2px;
+    padding-right: 2px; 
 }
 .link{
-    font-size: 16px;
+    font-size: 18px;
     text-align : center;
+    padding-left: 2px;
+    padding-right: 2px;  
 }
 
