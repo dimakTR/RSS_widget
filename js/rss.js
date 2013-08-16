@@ -34,10 +34,9 @@ function getRSS(xml) {
     $(xml).find("item").each(function(i){
                                        var url;
                                        var item,description,link,date;
-                                       if(i == 3){
+                                       if(i > 2){
                                             return false;
-                                       }
-                                       else {
+                                       } else {
                                             item = $('<div/>',{ class :'news'});
                                             description = $('<div/>',{ class :'description', id : 'number'+i});
                                             link = $('<div/>',{ class :'link'});
@@ -53,7 +52,7 @@ function getRSS(xml) {
                                             $("#num").attr("id", "num" + i );
                                             $("#num"+i).attr("href",url);
                                             $(".news").fadeIn(300);
-                                           }
+                                      }
     });   
 
  
@@ -74,11 +73,16 @@ function getRSS(xml) {
         }         
         
     }
-var poller = setInterval(function() { 
-        console.log("checking / loading new notes ..."); 
-        $('#main').empty();
-        $('#main').append('<div align="center" class="loader">' + '<img src="img/ajax-loader.gif" id="load"/>' + '</div>');
-        getData(); } , 180000);
+
+ 
     format();
 }
+
+var poller = setInterval(function() { 
+    console.log("checking / loading new notes ..."); 
+    $('#main').empty();
+    $('#main').append('<div align="center" class="loader">' + '<img src="img/ajax-loader.gif" id="load"/>' + '</div>');
+    getData();           
+} , 60000);
+
 
