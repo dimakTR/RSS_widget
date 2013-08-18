@@ -10,10 +10,10 @@ function getData(){
         dataType: "xml",
         success: getRSS, 
         error: function(){
-                        var error = $('<p class="error">Error</p>');
-                        $("#load").fadeOut().hide();
-                        $('.loader').append(error);
-                }
+                   var error = $('<p class="error">Error</p>');
+                   $("#load").fadeOut().hide();
+                   $('.loader').append(error);
+        }
     });
 }
 
@@ -32,40 +32,38 @@ function getRSS(xml) {
     $("#load").fadeOut().hide();
     var date; 
     $(xml).find("item").each(function(i){
-                                       var url;
-                                       var item,description,link,date;
-                                       if(i > 2){
-                                            return false;
-                                       } else {
-                                            item = $('<div/>',{ class :'news'});
-                                            description = $('<div/>',{ class :'description', id : 'number'+i});
-                                            link = $('<div/>',{ class :'link'});
-                                            date = $('<div/>',{ class :'date'});
-                                            url = $(this).find("link").text();  
-                                            $(link).append('<a id="num" target="_blank" >' + $(this).find("title").text() + '</a>');
-                                            $(description).append($(this).find("description").text());
-                                            var pubDateStr = $(this).find("pubDate").text();
-                                            var pubDate = new Date(pubDateStr);
-                                            $(date).append(formatDate(pubDate));
-                                            $(item).append(link,description,date);
-                                            $('#main').append(item);
-                                            $("#num").attr("id", "num" + i );
-                                            $("#num"+i).attr("href",url);
-                                            $(".news").fadeIn(300);
-                                      }
-    });   
+                            var url;
+                            var item,description,link,date;
+                            if(i > 2){
+                                return false;
+                            } else {
+                                item = $('<div/>',{ class :'news'});
+                                description = $('<div/>',{ class :'description', id : 'number'+i});
+                                link = $('<div/>',{ class :'link'});
+                                date = $('<div/>',{ class :'date'});
+                                url = $(this).find("link").text();  
+                                $(link).append('<a id="num" target="_blank" >' + $(this).find("title").text() + '</a>');
+                                $(description).append($(this).find("description").text());
+                                var pubDateStr = $(this).find("pubDate").text();
+                                var pubDate = new Date(pubDateStr);
+                                $(date).append('Published: ' + formatDate(pubDate));
+                                $(item).append(link,description,date);
+                                $('#main').append(item);
+                                $("#num").attr("id", "num" + i );
+                                $("#num"+i).attr("href",url);
+                                $(".news").fadeIn(300);
+                             }
+    });
 
  
     function format(){
         var data,i,lenght; 
         for ( i = 0 ; i < 3; i++) {
             lenght =$("#number"+i).text().length;
-            
             if ( lenght > 200 ) {
                 data = $("#number"+i).text().slice(0,200);
                 $("#number"+i).html('<p>'+data+'[...]'+'<p>');
-            }
-            else{
+            }else{
                 data = $("#number"+i).text();
                 $("#number"+i).html('<p>'+data+'<p>');
             }
@@ -73,8 +71,6 @@ function getRSS(xml) {
         }         
         
     }
-
- 
     format();
 }
 
